@@ -47,7 +47,10 @@ model, catalog and provenance manifest **are committed** under `public/`.
 
 The model is downloaded lazily on first classification, hash-checked, and reused
 for that page session. Runtime and model assets come from the same deployed site.
-No photo leaves the device and no image history is saved. A worker keeps model
+No photo leaves the device and no image history is saved. The image, prediction
+and score-section expansion survive navigation in temporary React memory. Only
+removing/replacing the image resets that selection; closing or reloading the app
+ends the session. Navigation does not trigger inference. A worker keeps model
 loading/inference off the interface thread; cancellation suppresses stale results.
 Single-threaded WASM avoids the cross-origin isolation headers Pages cannot set.
 Original Google Fonts requests remain; absent network access, the declared font

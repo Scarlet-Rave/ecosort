@@ -126,8 +126,8 @@
   },
   {
     "path": "pages-ui/README.md",
-    "bytes": 4204,
-    "sha256": "8dba6a39023b513bbb823f6bdaf267b9708e1d852584e833a2f61d573ca65d1f"
+    "bytes": 4443,
+    "sha256": "0fd92d6c801cc33f44cfaf7537d8f0387dcef5eda877a4cd97657c44c5283125"
   },
   {
     "path": "pages-ui/scripts/check-build.mjs",
@@ -141,8 +141,8 @@
   },
   {
     "path": "pages-ui/src/App.tsx",
-    "bytes": 28605,
-    "sha256": "e9102e70dfb0493a545a9d96992949a287f538441a68104bf89ed24089c127db"
+    "bytes": 29116,
+    "sha256": "f2e410d6556fca292bee6a854308b5dd35bec4b2d4c07883f93bcb4ef47b6a01"
   },
   {
     "path": "pages-ui/src/classification.ts",
@@ -161,8 +161,8 @@
   },
   {
     "path": "pages-ui/src/index.css",
-    "bytes": 33419,
-    "sha256": "2c6ae3922910f0c41f66c48e1be970676f0f0a2941849f93e0bcdd62a7ea772c"
+    "bytes": 33417,
+    "sha256": "47abce308a7700070d785018603a29ad011530f2af1d2ab71608883701d40a3d"
   },
   {
     "path": "pages-ui/src/inference.worker.ts",

@@ -20,6 +20,7 @@ export default function App() {
   const [catalogAttempt, setCatalogAttempt] = useState(0);
   const materials = catalog?.materials ?? [];
   const [result, setResult] = useState<Prediction | null>(null);
+  const [scoresExpanded, setScoresExpanded] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [dragging, setDragging] = useState(false);
@@ -71,13 +72,13 @@ export default function App() {
     setFile(null);
     setPreview("");
     setResult(null);
+    setScoresExpanded(false);
     setError("");
     setBusy(false);
     if (input.current) input.current.value = "";
   }
 
   function navigate(next: Page) {
-    reset();
     setPage(next);
     setSelected(null);
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -357,7 +358,11 @@ export default function App() {
                   )}
                 </div>
                 {result ? (
-                  <Result result={result} />
+                  <Result
+                    result={result}
+                    scoresExpanded={scoresExpanded}
+                    onScoresExpandedChange={setScoresExpanded}
+                  />
                 ) : (
                   <div className="result-empty">
                     {busy ? (
@@ -554,7 +559,15 @@ function Guidance({ material }: { material: Material }) {
   );
 }
 
-function Result({ result }: { result: Prediction }) {
+function Result({
+  result,
+  scoresExpanded,
+  onScoresExpandedChange,
+}: {
+  result: Prediction;
+  scoresExpanded: boolean;
+  onScoresExpandedChange: (expanded: boolean) => void;
+}) {
   const material = result.guidance;
   const score = result.score * 100;
   const uncertain = result.needsReview;
@@ -589,7 +602,11 @@ function Result({ result }: { result: Prediction }) {
       </div>
       <Guidance material={material} />
       <Notice warning>{material.caution}</Notice>
-      <details className="score-details">
+      <details
+        className="score-details"
+        open={scoresExpanded}
+        onToggle={(event) => onScoresExpandedChange(event.currentTarget.open)}
+      >
         <summary>
           View all category scores <Icon name="chevron" size={17} />
         </summary>
@@ -730,7 +747,7 @@ function About({ onClassify, catalog }: { onClassify: () => void; catalog: Catal
           <p>
             Your photo is classified on your device, inside your browser. It is not uploaded to a
             classification server or saved by EcoSort. The image preview is released when you
-            remove it or leave the classifier. The result suggests a material, not a verified
+            remove or replace it, or close EcoSort. The result suggests a material, not a verified
             disposal route.
           </p>
           <h3>Sources and attribution</h3>
