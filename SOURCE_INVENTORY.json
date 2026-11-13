@@ -141,8 +141,8 @@
   },
   {
     "path": "pages-ui/src/App.tsx",
-    "bytes": 29116,
-    "sha256": "f2e410d6556fca292bee6a854308b5dd35bec4b2d4c07883f93bcb4ef47b6a01"
+    "bytes": 28998,
+    "sha256": "40becc7227f5f51ff194dda37f3dfc2870e905b2910e8fffa9cc094be622e1b1"
   },
   {
     "path": "pages-ui/src/classification.ts",
@@ -161,8 +161,8 @@
   },
   {
     "path": "pages-ui/src/index.css",
-    "bytes": 33461,
-    "sha256": "7e7739bcb8464d0cdd62010b17207cad3a01bfa33a7c93103711a2fe1ef6c35d"
+    "bytes": 33359,
+    "sha256": "72cc8857dcd559acd5235b27bb7697e0b72de41951c04057361beeaac362ded3"
   },
   {
     "path": "pages-ui/src/inference.worker.ts",

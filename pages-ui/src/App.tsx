@@ -366,10 +366,7 @@ export default function App() {
                 ) : (
                   <div className="result-empty">
                     {busy ? (
-                      <div className="processing-art">
-                        <Icon name="scan" size={49} />
-                        <span />
-                      </div>
+                      <div className="processing-art" />
                     ) : (
                       <EmptyIllustration />
                     )}

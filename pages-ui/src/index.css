@@ -827,12 +827,6 @@
   position: relative;
   height: 135px;
   width: 150px;
-  display: grid;
-  place-items: center;
-  color: #7b9a60;
-}
-.processing-art > * {
-  grid-area: 1 / 1;
 }
 .processing-art:before {
   content: "";
