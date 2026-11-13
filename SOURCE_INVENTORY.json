@@ -161,8 +161,8 @@
   },
   {
     "path": "pages-ui/src/index.css",
-    "bytes": 33417,
-    "sha256": "47abce308a7700070d785018603a29ad011530f2af1d2ab71608883701d40a3d"
+    "bytes": 33461,
+    "sha256": "7e7739bcb8464d0cdd62010b17207cad3a01bfa33a7c93103711a2fe1ef6c35d"
   },
   {
     "path": "pages-ui/src/inference.worker.ts",

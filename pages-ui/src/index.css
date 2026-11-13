@@ -831,6 +831,9 @@
   place-items: center;
   color: #7b9a60;
 }
+.processing-art > * {
+  grid-area: 1 / 1;
+}
 .processing-art:before {
   content: "";
   position: absolute;
