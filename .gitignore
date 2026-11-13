@@ -1,0 +1,35 @@
+# Generated browser assets and local dependencies
+**/node_modules/
+**/dist/
+**/public/runtime/
+**/public/.nojekyll
+**/public/licenses/
+**/public/THIRD_PARTY_NOTICES.md
+# Research files and environments never belong in this public Pages repository
+/data/
+/results/
+/models/checkpoints/
+/supporting_materials/
+/submission/
+/work/
+/outputs/
+**/.venv/
+**/venv/
+**/env/
+**/__pycache__/
+*.py[cod]
+*.egg-info/
+*.pt
+*.pth
+*.zip
+# Machine settings, secrets and temporary files
+*.local.json
+*.local.txt
+*.log
+*.tmp
+*.temp
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db

@@ -1,0 +1,960 @@
+{
+  "stage": "5C",
+  "checked_utc": "2026-11-13T12:52:27.799610+00:00",
+  "ready_for_manual_github_pages_deployment": true,
+  "publication": {
+    "github_repository_created": false,
+    "github_actions_run": false,
+    "deployed": false,
+    "public_url": null
+  },
+  "completed_before_resume": [
+    "Real checkpoint export to fixed FP32 ONNX",
+    "Native and browser numerical parity on 25 validation images",
+    "21 validation-derived image-decoding fixtures",
+    "10 browser contract/preprocessing unit tests",
+    "43 original Pages interface checks",
+    "15 preserved Python application regressions"
+  ],
+  "completed_on_resume": [
+    "Independent Node-only clean install/test/build with /EcoSort/ base",
+    "Final 50-check browser run on the repository-path build",
+    "All six actual UI classes, scores and review decisions",
+    "Backend network access blocked during final checks",
+    "Workflow permissions and structure verification",
+    "Original-file preservation verification",
+    "Final report and clean-source preparation"
+  ],
+  "model": {
+    "schema_version": 1,
+    "model": "mobilenet_v2",
+    "model_file": "models/ecosort-mobilenetv2.onnx",
+    "onnx_sha256": "36766ac16950a16cdb2d1567e711114cae8d6043add533fa819abc0ac2fcd970",
+    "onnx_bytes": 8902142,
+    "checkpoint": "models/checkpoints/mobilenet_v2/20261113T080815958782Z/best.pt",
+    "checkpoint_sha256": "f7b5fca1b392484d58df6e1856a1af0f5d5f9df0dda2ad11805faf2a38a6e4d8",
+    "classes": [
+      "cardboard",
+      "glass",
+      "metal",
+      "paper",
+      "plastic",
+      "trash"
+    ],
+    "validation_manifest_sha256": "8fbd7a4f090e9756d5fd2482998602b4983e54a5c530c235a266afa80f1e0f98",
+    "uncertainty_policy_sha256": "189a3b03eb8be61841118b83640813f8ac95af4a745b83a807b0d8a7a5eb902f",
+    "review_threshold": 0.47120377421379084,
+    "selection_data": "validation_only",
+    "input": {
+      "name": "images",
+      "shape": [
+        1,
+        3,
+        224,
+        224
+      ],
+      "dtype": "float32",
+      "color": "RGB after EXIF orientation; alpha discarded, not composited",
+      "resize": "Pillow-compatible antialiased bilinear, direct 224x224 stretch, horizontal then vertical, uint8 rounding",
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "outputs": [
+      "logits",
+      "scores"
+    ],
+    "opset": 17,
+    "ir_version": 8,
+    "operators": [
+      "Add",
+      "Clip",
+      "Constant",
+      "Conv",
+      "Gemm",
+      "ReduceMean",
+      "Softmax"
+    ],
+    "exporter": {
+      "torch": "2.9.1+cu126",
+      "onnx": "1.23.2",
+      "onnxruntime": "1.31.1",
+      "method": "torch.onnx.export dynamo=False (fixed-shape TorchScript exporter); no quantization"
+    },
+    "model_selection": "MobileNetV2 selected using validation macro F1; test performance was not used.",
+    "limitations": [
+      "Scores remain uncalibrated.",
+      "Native browser JPEG decoding can differ slightly from Pillow.",
+      "The exported weights are publicly downloadable."
+    ]
+  },
+  "parity": {
+    "scope": "Numerical compatibility only; not an accuracy evaluation. Original validation images only; no held-out test images read.",
+    "samples": 25,
+    "native_onnx": {
+      "passed": true,
+      "samples": 25,
+      "max_abs_score": 1.4603137969970703e-06,
+      "max_abs_logit": 9.059906005859375e-06
+    },
+    "browser_max_abs_score_same_tensor": 2.0563602447509766e-06,
+    "browser_max_abs_score_end_to_end": 2.0563602447509766e-06,
+    "all_sample_labels_and_review_decisions_match": true,
+    "decode_variants": [
+      {
+        "file": "binary.png",
+        "max_abs_score": 5.662441253662109e-07,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "exif-2.jpg",
+        "max_abs_score": 1.0244548320770264e-08,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "exif-2.png",
+        "max_abs_score": 2.384185791015625e-07,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "exif-3.jpg",
+        "max_abs_score": 1.1920928955078125e-07,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "exif-3.png",
+        "max_abs_score": 9.313225746154785e-09,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "exif-4.jpg",
+        "max_abs_score": 1.1920928955078125e-07,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "exif-4.png",
+        "max_abs_score": 2.384185791015625e-07,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "exif-5.jpg",
+        "max_abs_score": 8.195638656616211e-08,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "exif-5.png",
+        "max_abs_score": 1.1920928955078125e-07,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "exif-6.jpg",
+        "max_abs_score": 2.980232238769531e-07,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "exif-6.png",
+        "max_abs_score": 2.2165477275848389e-07,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "exif-7.jpg",
+        "max_abs_score": 1.043081283569336e-07,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "exif-7.png",
+        "max_abs_score": 1.1920928955078125e-07,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "exif-8.jpg",
+        "max_abs_score": 2.384185791015625e-07,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "exif-8.png",
+        "max_abs_score": 2.384185791015625e-07,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "gray.png",
+        "max_abs_score": 2.384185791015625e-07,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "gray16.png",
+        "max_abs_score": 2.384185791015625e-07,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "palette.png",
+        "max_abs_score": 1.5795230865478516e-06,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "progressive.jpg",
+        "max_abs_score": 1.1920928955078125e-07,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "rgb.png",
+        "max_abs_score": 1.1920928955078125e-07,
+        "same_label": true,
+        "same_review": true
+      },
+      {
+        "file": "transparent.png",
+        "max_abs_score": 1.1920928955078125e-07,
+        "same_label": true,
+        "same_review": true
+      }
+    ],
+    "pillow_decoded_rgb_tensor_difference": 0,
+    "source_tensor_check_scope": "25 original validation RGB inputs; browser resize/normalization tensors matched PyTorch exactly. Four additional algorithmic unit-test patterns match Pillow reference tensor hashes.",
+    "tolerances_predeclared": {
+      "same_tensor_max_abs_score": 1e-05,
+      "end_to_end_max_abs_score": 0.01
+    },
+    "samples_detail": [
+      {
+        "path": "data/raw/trashnet/cardboard/cardboard324.jpg",
+        "reference_label": "cardboard",
+        "browser_label": "cardboard",
+        "browser_scores": [
+          0.9832799434661865,
+          0.00020496360957622528,
+          0.00010853700223378837,
+          0.012940905056893826,
+          7.073294545989484e-05,
+          0.0033949483186006546
+        ],
+        "same_tensor_max_abs_score": 1.1920928955078125e-07,
+        "end_to_end_max_abs_score": 1.1920928955078125e-07,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/cardboard/cardboard152.jpg",
+        "reference_label": "trash",
+        "browser_label": "trash",
+        "browser_scores": [
+          0.188475102186203,
+          0.017355456948280334,
+          0.03759009763598442,
+          0.3662043511867523,
+          0.012427729554474354,
+          0.37794721126556396
+        ],
+        "same_tensor_max_abs_score": 4.172325134277344e-07,
+        "end_to_end_max_abs_score": 4.172325134277344e-07,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/cardboard/cardboard110.jpg",
+        "reference_label": "trash",
+        "browser_label": "trash",
+        "browser_scores": [
+          0.23878730833530426,
+          0.10188222676515579,
+          0.08668520301580429,
+          0.0489010326564312,
+          0.012007124722003937,
+          0.511737048625946
+        ],
+        "same_tensor_max_abs_score": 8.940696716308594e-07,
+        "end_to_end_max_abs_score": 8.940696716308594e-07,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/glass/glass317.jpg",
+        "reference_label": "glass",
+        "browser_label": "glass",
+        "browser_scores": [
+          2.4006274543353356e-05,
+          0.9987993240356445,
+          0.0007569013396278024,
+          0.00017064290295820683,
+          0.0001573286863276735,
+          9.178389882436022e-05
+        ],
+        "same_tensor_max_abs_score": 4.71482053399086e-09,
+        "end_to_end_max_abs_score": 4.71482053399086e-09,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/glass/glass300.jpg",
+        "reference_label": "glass",
+        "browser_label": "glass",
+        "browser_scores": [
+          0.0014041535323485732,
+          0.9714362025260925,
+          0.012605304829776287,
+          0.0020735880825668573,
+          0.00435066781938076,
+          0.008130194619297981
+        ],
+        "same_tensor_max_abs_score": 2.0954757928848267e-08,
+        "end_to_end_max_abs_score": 2.0954757928848267e-08,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/glass/glass277.jpg",
+        "reference_label": "glass",
+        "browser_label": "glass",
+        "browser_scores": [
+          5.190179945202544e-05,
+          0.9548925757408142,
+          0.023282445967197418,
+          0.00017954212671611458,
+          0.02026647888123989,
+          0.0013271556235849857
+        ],
+        "same_tensor_max_abs_score": 1.1920928955078125e-07,
+        "end_to_end_max_abs_score": 1.1920928955078125e-07,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/metal/metal142.jpg",
+        "reference_label": "metal",
+        "browser_label": "metal",
+        "browser_scores": [
+          0.0013652819907292724,
+          0.04207422584295273,
+          0.9186403751373291,
+          0.024228837341070175,
+          0.008626321330666542,
+          0.005064828786998987
+        ],
+        "same_tensor_max_abs_score": 7.078051567077637e-08,
+        "end_to_end_max_abs_score": 7.078051567077637e-08,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/metal/metal387.jpg",
+        "reference_label": "metal",
+        "browser_label": "metal",
+        "browser_scores": [
+          0.0063729737885296345,
+          0.03241557255387306,
+          0.8182342648506165,
+          0.010054892860352993,
+          0.12208370119333267,
+          0.010838606394827366
+        ],
+        "same_tensor_max_abs_score": 6.556510925292969e-07,
+        "end_to_end_max_abs_score": 6.556510925292969e-07,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/metal/metal125.jpg",
+        "reference_label": "metal",
+        "browser_label": "metal",
+        "browser_scores": [
+          0.0009516680147498846,
+          0.1804552972316742,
+          0.7352935671806335,
+          0.0029845305252820253,
+          0.05376426875591278,
+          0.02655063010752201
+        ],
+        "same_tensor_max_abs_score": 3.2782554626464844e-07,
+        "end_to_end_max_abs_score": 3.2782554626464844e-07,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/paper/paper88.jpg",
+        "reference_label": "paper",
+        "browser_label": "paper",
+        "browser_scores": [
+          0.008553802035748959,
+          0.0020279777236282825,
+          0.011840719729661942,
+          0.9183552861213684,
+          0.026060283184051514,
+          0.03316193073987961
+        ],
+        "same_tensor_max_abs_score": 1.1920928955078125e-07,
+        "end_to_end_max_abs_score": 1.1920928955078125e-07,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/paper/paper540.jpg",
+        "reference_label": "paper",
+        "browser_label": "paper",
+        "browser_scores": [
+          0.4634816348552704,
+          5.832222450408153e-05,
+          0.0007606111466884613,
+          0.5344542860984802,
+          6.989328539930284e-05,
+          0.0011752439895644784
+        ],
+        "same_tensor_max_abs_score": 1.5497207641601562e-06,
+        "end_to_end_max_abs_score": 1.5497207641601562e-06,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/paper/paper161.jpg",
+        "reference_label": "paper",
+        "browser_label": "paper",
+        "browser_scores": [
+          0.0007900551427155733,
+          0.00017042575927916914,
+          0.0008425113628618419,
+          0.9923116564750671,
+          0.0009082324686460197,
+          0.004977009724825621
+        ],
+        "same_tensor_max_abs_score": 3.306195139884949e-08,
+        "end_to_end_max_abs_score": 3.306195139884949e-08,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/plastic/plastic399.jpg",
+        "reference_label": "plastic",
+        "browser_label": "plastic",
+        "browser_scores": [
+          0.0005257508018985391,
+          0.05521488934755325,
+          0.16381390392780304,
+          0.009071074426174164,
+          0.695380449295044,
+          0.07599392533302307
+        ],
+        "same_tensor_max_abs_score": 7.152557373046875e-07,
+        "end_to_end_max_abs_score": 7.152557373046875e-07,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/plastic/plastic128.jpg",
+        "reference_label": "plastic",
+        "browser_label": "plastic",
+        "browser_scores": [
+          2.6593877919367515e-05,
+          0.40063223242759705,
+          0.0008110867929644883,
+          0.00025643626577220857,
+          0.597597599029541,
+          0.0006760313990525901
+        ],
+        "same_tensor_max_abs_score": 1.0728836059570312e-06,
+        "end_to_end_max_abs_score": 1.0728836059570312e-06,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/plastic/plastic119.jpg",
+        "reference_label": "plastic",
+        "browser_label": "plastic",
+        "browser_scores": [
+          2.748022961895913e-05,
+          0.11477116495370865,
+          0.010333986952900887,
+          0.00012702113599516451,
+          0.8677998185157776,
+          0.006940458435565233
+        ],
+        "same_tensor_max_abs_score": 1.7881393432617188e-07,
+        "end_to_end_max_abs_score": 1.7881393432617188e-07,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/trash/trash41.jpg",
+        "reference_label": "trash",
+        "browser_label": "trash",
+        "browser_scores": [
+          0.016188936308026314,
+          0.0008816002518869936,
+          0.013389949686825275,
+          0.05497869476675987,
+          0.014660200104117393,
+          0.8999006152153015
+        ],
+        "same_tensor_max_abs_score": 1.825392246246338e-07,
+        "end_to_end_max_abs_score": 1.825392246246338e-07,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/trash/trash59.jpg",
+        "reference_label": "trash",
+        "browser_label": "trash",
+        "browser_scores": [
+          0.12257914245128632,
+          0.0022736366372555494,
+          0.002651885151863098,
+          0.2861897647380829,
+          0.014391045086085796,
+          0.5719144940376282
+        ],
+        "same_tensor_max_abs_score": 7.748603820800781e-07,
+        "end_to_end_max_abs_score": 7.748603820800781e-07,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/trash/trash6.jpg",
+        "reference_label": "trash",
+        "browser_label": "trash",
+        "browser_scores": [
+          0.0005911109037697315,
+          0.00020360667258501053,
+          0.0004995295312255621,
+          0.021181641146540642,
+          0.001413121703080833,
+          0.9761109948158264
+        ],
+        "same_tensor_max_abs_score": 1.1920928955078125e-07,
+        "end_to_end_max_abs_score": 1.1920928955078125e-07,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/plastic/plastic24.jpg",
+        "reference_label": "metal",
+        "browser_label": "metal",
+        "browser_scores": [
+          0.001950369798578322,
+          0.1559247225522995,
+          0.46895894408226013,
+          0.0012084577465429902,
+          0.29646506905555725,
+          0.07549243420362473
+        ],
+        "same_tensor_max_abs_score": 2.0563602447509766e-06,
+        "end_to_end_max_abs_score": 2.0563602447509766e-06,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/cardboard/cardboard137.jpg",
+        "reference_label": "paper",
+        "browser_label": "paper",
+        "browser_scores": [
+          0.31644439697265625,
+          0.003706947900354862,
+          0.005437272135168314,
+          0.47345060110092163,
+          0.007127304095774889,
+          0.19383348524570465
+        ],
+        "same_tensor_max_abs_score": 4.76837158203125e-07,
+        "end_to_end_max_abs_score": 4.76837158203125e-07,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/metal/metal179.jpg",
+        "reference_label": "metal",
+        "browser_label": "metal",
+        "browser_scores": [
+          0.004455363377928734,
+          0.10193520784378052,
+          0.4753788709640503,
+          0.013233507052063942,
+          0.08271954208612442,
+          0.3222775161266327
+        ],
+        "same_tensor_max_abs_score": 7.450580596923828e-07,
+        "end_to_end_max_abs_score": 7.450580596923828e-07,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/glass/glass117.jpg",
+        "reference_label": "metal",
+        "browser_label": "metal",
+        "browser_scores": [
+          0.0007126004784367979,
+          0.4332093298435211,
+          0.4791193902492523,
+          0.006651006639003754,
+          0.07879620045423508,
+          0.0015114496927708387
+        ],
+        "same_tensor_max_abs_score": 1.1920928955078125e-07,
+        "end_to_end_max_abs_score": 1.1920928955078125e-07,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/cardboard/cardboard109.jpg",
+        "reference_label": "cardboard",
+        "browser_label": "cardboard",
+        "browser_scores": [
+          0.9916365742683411,
+          9.882547601591796e-05,
+          0.00011497020750539377,
+          0.0038288040086627007,
+          7.682587602175772e-05,
+          0.004243881441652775
+        ],
+        "same_tensor_max_abs_score": 1.1920928955078125e-07,
+        "end_to_end_max_abs_score": 1.1920928955078125e-07,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/metal/metal63.jpg",
+        "reference_label": "metal",
+        "browser_label": "metal",
+        "browser_scores": [
+          0.008392976596951485,
+          0.17700137197971344,
+          0.3025951385498047,
+          0.15486131608486176,
+          0.16207343339920044,
+          0.19507578015327454
+        ],
+        "same_tensor_max_abs_score": 2.2351741790771484e-07,
+        "end_to_end_max_abs_score": 2.2351741790771484e-07,
+        "same_review": true
+      },
+      {
+        "path": "data/raw/trashnet/trash/trash124.jpg",
+        "reference_label": "trash",
+        "browser_label": "trash",
+        "browser_scores": [
+          0.025553569197654724,
+          0.008010564371943474,
+          0.006874559912830591,
+          0.17688345909118652,
+          0.21468926966190338,
+          0.5679885745048523
+        ],
+        "same_tensor_max_abs_score": 1.1324882507324219e-06,
+        "end_to_end_max_abs_score": 1.1324882507324219e-06,
+        "same_review": true
+      }
+    ],
+    "unsupported_onnx_operations_encountered": [],
+    "export_warning": "The fixed-shape TorchScript exporter is deprecated in PyTorch 2.9 but supported; dynamo=False was selected explicitly. No original weights were changed or quantized."
+  },
+  "checks": {
+    "frontend_unit_tests": {
+      "passed": true,
+      "tests": 10,
+      "clean_install": true,
+      "python_used_by_node_tests_or_build": false
+    },
+    "prior_ui_checks": {
+      "passed": true,
+      "checks": 43
+    },
+    "final_repository_path_browser": {
+      "checks": [
+        "Repository-path entry, CSS and scripts load",
+        "Actual UI class cardboard",
+        "Displayed score matches validation reference cardboard",
+        "Review decision matches validation reference cardboard",
+        "Six scores for cardboard",
+        "Preserved caution for cardboard",
+        "Actual UI class glass",
+        "Displayed score matches validation reference glass",
+        "Review decision matches validation reference glass",
+        "Six scores for glass",
+        "Preserved caution for glass",
+        "Actual UI class metal",
+        "Displayed score matches validation reference metal",
+        "Review decision matches validation reference metal",
+        "Six scores for metal",
+        "Preserved caution for metal",
+        "Actual UI class paper",
+        "Displayed score matches validation reference paper",
+        "Review decision matches validation reference paper",
+        "Six scores for paper",
+        "Preserved caution for paper",
+        "Actual UI class plastic",
+        "Displayed score matches validation reference plastic",
+        "Review decision matches validation reference plastic",
+        "Six scores for plastic",
+        "Preserved caution for plastic",
+        "Actual UI class trash",
+        "Displayed score matches validation reference trash",
+        "Review decision matches validation reference trash",
+        "Six scores for trash",
+        "Preserved caution for trash",
+        "Actual UI class trash",
+        "Displayed score matches validation reference trash",
+        "Review decision matches validation reference trash",
+        "Exactly one ONNX download for the session",
+        "Six material guides",
+        "Browser-local photo handling explained",
+        "Navigation and repository-root refresh work",
+        "No horizontal overflow at 1440",
+        "No horizontal overflow at 768",
+        "No horizontal overflow at 390",
+        "No horizontal overflow at 320",
+        "Actual UI class trash",
+        "Displayed score matches validation reference trash",
+        "Review decision matches validation reference trash",
+        "Unsupported browser gets clear feedback without a prediction",
+        "Tampered model gives an error rather than sample scores",
+        "All production assets returned successful responses",
+        "FastAPI access blocked and never attempted",
+        "No browser runtime exceptions"
+      ],
+      "predictions": [
+        {
+          "source_validation_path": "data/raw/trashnet/cardboard/cardboard324.jpg",
+          "label": "cardboard",
+          "needs_review": false
+        },
+        {
+          "source_validation_path": "data/raw/trashnet/glass/glass317.jpg",
+          "label": "glass",
+          "needs_review": false
+        },
+        {
+          "source_validation_path": "data/raw/trashnet/metal/metal142.jpg",
+          "label": "metal",
+          "needs_review": false
+        },
+        {
+          "source_validation_path": "data/raw/trashnet/paper/paper88.jpg",
+          "label": "paper",
+          "needs_review": false
+        },
+        {
+          "source_validation_path": "data/raw/trashnet/plastic/plastic399.jpg",
+          "label": "plastic",
+          "needs_review": false
+        },
+        {
+          "source_validation_path": "data/raw/trashnet/cardboard/cardboard152.jpg",
+          "label": "trash",
+          "needs_review": true
+        },
+        {
+          "source_validation_path": "data/raw/trashnet/cardboard/cardboard152.jpg",
+          "label": "trash",
+          "needs_review": true
+        },
+        {
+          "source_validation_path": "data/raw/trashnet/cardboard/cardboard152.jpg",
+          "label": "trash",
+          "needs_review": true
+        }
+      ],
+      "runtime_errors": [],
+      "failed_assets": [],
+      "forbidden_api_requests": [],
+      "mobile_emulation": true,
+      "passed": true
+    },
+    "local_python_application_regressions": [
+      {
+        "suite": "test_stage5b.py",
+        "passed": true,
+        "tests": 8,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "suite": "test_stage5.py",
+        "passed": true,
+        "tests": 7,
+        "failures": 0,
+        "errors": 0
+      }
+    ],
+    "dependency_consistency": "pip check passed after adding the optional pinned ONNX tools; original ML/web dependency pins unchanged.",
+    "workflow": {
+      "static_validation_passed": true,
+      "build_permissions": {
+        "contents": "read",
+        "pages": "read"
+      },
+      "deploy_permissions": {
+        "pages": "write",
+        "id-token": "write"
+      },
+      "needs": "build",
+      "environment": "github-pages",
+      "base_path": "${{ steps.pages.outputs.base_path }}/",
+      "uploaded_directory": "pages-ui/dist",
+      "execution_status": "Not run on GitHub; remote repository/publication intentionally deferred."
+    }
+  },
+  "preservation_and_build": {
+    "passed": true,
+    "original_files": 3082,
+    "missing_original_files": [],
+    "changed_original_files": [
+      ".gitignore",
+      "README.md"
+    ],
+    "protected_data_model_result_files": 2909,
+    "protected_changes": [],
+    "original_local_application_files_unchanged": true,
+    "original_figma_styles_and_artwork_preserved": true,
+    "workflow_checks_passed": true,
+    "workflow_scope": "Parsed and checked permissions, dependencies, commands, artifact path and base-path output against GitHub documentation; not executed on GitHub.",
+    "clean_node_install_and_tests_passed": true,
+    "clean_build_base": "/EcoSort/",
+    "build_bytes": 24545464,
+    "build_files": 21,
+    "model_bytes": 8902142,
+    "model_sha256": "36766ac16950a16cdb2d1567e711114cae8d6043add533fa819abc0ac2fcd970",
+    "original_checkpoint_sha256": "f7b5fca1b392484d58df6e1856a1af0f5d5f9df0dda2ad11805faf2a38a6e4d8",
+    "onnx_files": 1,
+    "wasm_files": 1,
+    "build_files_inventory": [
+      {
+        "path": ".nojekyll",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "catalog.json",
+        "bytes": 4240,
+        "sha256": "9e57a57ac6cc878efc404dea6082bf49301fcb9280d397e13493a3d2a85efe86"
+      },
+      {
+        "path": "ecosort.svg",
+        "bytes": 338,
+        "sha256": "17567eb0656b5589f55f9832cdac50367806ab0e19267a69b5bbe182dcb05fc1"
+      },
+      {
+        "path": "favicon.png",
+        "bytes": 2410,
+        "sha256": "e83dfb12d209c2da1390e424398f81e745992339073f7e6ef38ae8b5aea1b522"
+      },
+      {
+        "path": "index.html",
+        "bytes": 845,
+        "sha256": "5ac52fdb25d42c4ce64a81ed6d936da17bee30e65e2c0f531aadc908889474e3"
+      },
+      {
+        "path": "model-manifest.json",
+        "bytes": 1962,
+        "sha256": "56ec246043299e827733834fbbf036a87a4944b5ba7a29ff9b5b83249ac0aa21"
+      },
+      {
+        "path": "THIRD_PARTY_NOTICES.md",
+        "bytes": 2413,
+        "sha256": "789901bee18ba08e5a02c73663efd0e16a6891571bfca359d65809bb060d39b3"
+      },
+      {
+        "path": "assets/index-eZbmlbll.js",
+        "bytes": 219849,
+        "sha256": "162948c205bb85aeb5eb07529bf3ccada4e0bcee5678e501b1a6d0c9c7d518fa"
+      },
+      {
+        "path": "assets/index-JhAeviuW.css",
+        "bytes": 32408,
+        "sha256": "1c2df087946acdf37fca04395d5ad6188139f5a2b8166d702d9151478bdd4f09"
+      },
+      {
+        "path": "assets/inference.worker-vjkLAbkM.js",
+        "bytes": 81765,
+        "sha256": "4fc04efb523c05be2207bde81b7c476b798c68417e8601792c5eac530e91778f"
+      },
+      {
+        "path": "licenses/FAST-PNG-MIT.txt",
+        "bytes": 1071,
+        "sha256": "47ec9747cf2c470a505fcb20f3ec2ff2e60ea4febaf2e1e7041a24fc369fac3c"
+      },
+      {
+        "path": "licenses/ONNX-RUNTIME-MIT.txt",
+        "bytes": 1073,
+        "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+      },
+      {
+        "path": "licenses/ONNX-RUNTIME-THIRD-PARTY.txt",
+        "bytes": 338088,
+        "sha256": "143764b952fdb1a7c69ce653bfba74a7744d6a8a573bfb73e235fba356c83de3"
+      },
+      {
+        "path": "licenses/PILLOW-MIT-CMU.txt",
+        "bytes": 78481,
+        "sha256": "988ffe8ab3480b0f4e9a0ab2702bffd73d9fb6b47198043fb3ba101a62fac236"
+      },
+      {
+        "path": "licenses/REACT-DOM-MIT.txt",
+        "bytes": 1088,
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      },
+      {
+        "path": "licenses/REACT-MIT.txt",
+        "bytes": 1088,
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      },
+      {
+        "path": "licenses/TORCHVISION-BSD.txt",
+        "bytes": 1546,
+        "sha256": "c06363f9d33627dc5173b13522444cc85fbb4739f63e16d4587d5c0a165b5b1e"
+      },
+      {
+        "path": "licenses/TRASHNET-MIT.txt",
+        "bytes": 1067,
+        "sha256": "e33347ae1589c1c7d7de5cf2e433e6c8060256273c7287a29d7c6e1e45c466f1"
+      },
+      {
+        "path": "models/ecosort-mobilenetv2.onnx",
+        "bytes": 8902142,
+        "sha256": "36766ac16950a16cdb2d1567e711114cae8d6043add533fa819abc0ac2fcd970"
+      },
+      {
+        "path": "runtime/ort-wasm-simd-threaded.mjs",
+        "bytes": 24738,
+        "sha256": "30ed0b5cd1182ede931fea448afb567d4dc705ec957af09f108a2be5f770dac3"
+      },
+      {
+        "path": "runtime/ort-wasm-simd-threaded.wasm",
+        "bytes": 14848852,
+        "sha256": "4b884c203b0fa48d057be3332c65513ff85aa3c5bddd6946acc0fab7ecda001d"
+      }
+    ]
+  },
+  "clean_repository": {
+    "preparation_script": "scripts/prepare_pages_repository.py",
+    "method": "New directory from explicit source allowlist with per-file hashes",
+    "datasets": false,
+    "pytorch_checkpoints": false,
+    "experimental_results": false,
+    "python_environments": false,
+    "node_modules": false,
+    "git_metadata": false,
+    "runtime_wasm_in_source": "Generated at build from locked npm dependency, included in dist",
+    "onnx_model_in_source": true,
+    "source_inventory": "SOURCE_INVENTORY.json",
+    "public_upload_folder": "EcoSort-GitHub-Pages-Source",
+    "remote_created": false
+  },
+  "limitations": [
+    "Browser checks used Windows Chrome, desktop and touch/mobile emulation; physical phones and other browser engines were not tested.",
+    "No public URL exists yet. GitHub Actions must run successfully after the user creates/uploads the public repository and enables Pages.",
+    "Initial download and CPU/memory costs are borne by the browser; older devices can be unsupported.",
+    "Uncalibrated scores and validation-only threshold remain unchanged; other decoders/devices can differ near class/review boundaries.",
+    "Google Fonts remains the original optional external request; model/runtime/inference are self-hosted.",
+    "Public model weights are downloadable. Free Pages usage limits and account/repository availability apply."
+  ],
+  "remaining_implementation_issues": [],
+  "constraints_respected": [
+    "No training",
+    "No formal test evaluation",
+    "No test images used for development",
+    "No dataset/checkpoint/result modifications",
+    "No Figma redesign",
+    "Local React + FastAPI preserved",
+    "No GitHub repository created or deployment",
+    "No lecturer submission ZIP"
+  ]
+}

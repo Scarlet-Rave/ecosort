@@ -1,0 +1,92 @@
+{
+  "materials": [
+    {
+      "label": "cardboard",
+      "name": "Cardboard",
+      "icon": "cardboard",
+      "description": "Boxes, packaging & corrugated board",
+      "action": "Keep it clean, dry and flat.",
+      "steps": [
+        "Empty the box and separate any plastic liners or inserts.",
+        "Flatten clean, dry cardboard for easier collection.",
+        "Check local rules for food-soiled, waxed or coated packaging; acceptance varies."
+      ],
+      "caution": "A cardboard prediction cannot identify coatings or food contamination."
+    },
+    {
+      "label": "glass",
+      "name": "Glass",
+      "icon": "glass",
+      "description": "Glass bottles & jars",
+      "action": "Check the type of glass first.",
+      "steps": [
+        "Empty accepted bottles and jars; follow local instructions for rinsing and lids.",
+        "Keep ceramics, mirrors, light bulbs and window glass separate unless explicitly accepted.",
+        "Handle damaged glass carefully and follow your collector\u2019s instructions for broken glass."
+      ],
+      "caution": "The model cannot confirm that an item is container glass or safe to handle."
+    },
+    {
+      "label": "metal",
+      "name": "Metal",
+      "icon": "metal",
+      "description": "Metal cans & similar containers",
+      "action": "Empty the container. Check special items.",
+      "steps": [
+        "For accepted food or drink cans, empty the contents and follow local cleaning rules.",
+        "Check separately for foil, mixed-material packaging and sharp metal items.",
+        "Use appropriate collection services for batteries, electronics and pressurized containers."
+      ],
+      "caution": "Do not puncture or treat an unknown container as ordinary recycling."
+    },
+    {
+      "label": "paper",
+      "name": "Paper",
+      "icon": "paper",
+      "description": "Sheets, newspapers & paper packaging",
+      "action": "Keep paper dry and free of food.",
+      "steps": [
+        "Separate clean, dry paper from food and liquid waste.",
+        "Remove non-paper wrapping where practical.",
+        "Ask your collector about coated paper, receipts, tissues and soiled paper; they may need another route."
+      ],
+      "caution": "The model cannot reliably identify coatings or contamination."
+    },
+    {
+      "label": "plastic",
+      "name": "Plastic",
+      "icon": "plastic",
+      "description": "Plastic bottles, tubs & packaging",
+      "action": "Match the item to your local accepted list.",
+      "steps": [
+        "Check whether the item\u2019s shape and plastic type are accepted locally.",
+        "Empty accepted containers; follow collection instructions for cleaning and caps.",
+        "Keep bags, films and mixed-material packaging out of a collection stream unless explicitly accepted."
+      ],
+      "caution": "A resin code or recycling symbol alone does not establish local acceptance."
+    },
+    {
+      "label": "trash",
+      "name": "Trash",
+      "icon": "trash",
+      "description": "A broad residual category in TrashNet",
+      "action": "Pause and identify the item manually.",
+      "steps": [
+        "Inspect the item and check local collection guidance before choosing a disposal route.",
+        "Separate batteries, electronics, chemicals, medical waste and other items needing special collection.",
+        "Use residual waste collection only when suitable under your local rules."
+      ],
+      "caution": "Trash is a broad, less reliable class. This prediction is not a safe-disposal decision."
+    }
+  ],
+  "local_rule": "Recycling acceptance depends on your local collection rules and the item\u2019s condition. A predicted material is not proof that an item is recyclable or safe to dispose of.",
+  "review_threshold": 0.47120377421379084,
+  "max_upload_bytes": 10485760,
+  "max_image_pixels": 20000000,
+  "score_note": "An uncalibrated model score, not a probability that the prediction is correct.",
+  "references": {
+    "epa": "https://www.epa.gov/recycle/how-do-i-recycle-common-recyclables",
+    "sdg": "https://sdgs.un.org/goals/goal11",
+    "trashnet": "https://github.com/garythung/trashnet"
+  }
+}

@@ -1,0 +1,55 @@
+name: Deploy EcoSort to GitHub Pages
+on:
+  push:
+    branches: [main]
+    paths: ['pages-ui/**', '.github/workflows/pages.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24.19.0'
+      - name: Install the pinned package manager
+        run: npm install --global pnpm@11.25.0
+      - name: Configure Pages and discover the repository base path
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Install locked browser dependencies
+        working-directory: pages-ui
+        run: pnpm install --frozen-lockfile
+      - name: Run browser contract and preprocessing unit tests
+        working-directory: pages-ui
+        run: pnpm test
+      - name: Build and verify static assets
+        working-directory: pages-ui
+        env:
+          ECOSORT_BASE_PATH: ${{ steps.pages.outputs.base_path }}/
+        run: pnpm build
+      - name: Upload only the static site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: pages-ui/dist
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

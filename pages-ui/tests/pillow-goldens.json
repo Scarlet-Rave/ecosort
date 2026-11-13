@@ -1,0 +1,22 @@
+[
+  {
+    "width": 3,
+    "height": 5,
+    "tensor_sha256": "7566e5788c253652167cc42e5ddf5bf74dd317d1e238a4187852a607dd84fc6f"
+  },
+  {
+    "width": 224,
+    "height": 224,
+    "tensor_sha256": "34ff23a3f5d5a09069ee859fe19f635e33d66fed3ea8a366e6bae1dd5a655fd2"
+  },
+  {
+    "width": 512,
+    "height": 384,
+    "tensor_sha256": "c0cad89358523f7200ff8edbc232494b48dbc56db603f62d1e6579d6aadd089e"
+  },
+  {
+    "width": 256,
+    "height": 12,
+    "tensor_sha256": "e3a01185a40e1dab406476b12190e779b40f8a6beea8b73fde52392c081869db"
+  }
+]

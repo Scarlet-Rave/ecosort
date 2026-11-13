@@ -1,0 +1,13 @@
+node_modules/
+dist/
+public/runtime/
+public/.nojekyll
+public/licenses/
+public/THIRD_PARTY_NOTICES.md
+.vite/
+.vite-temp/
+*.tsbuildinfo
+*.log
+.env
+.env.*
+!.env.example
